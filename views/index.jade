@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{message}
+  p ================= API Usage =================
+  
+  h4 step 1 :
+  p #{getAccess}
+  p exampleToken : #{token}
+  
+  h4 Add:
+  p #{post}
+
+  h3 ( Note : #{api} )
+
+  h4 GetAllClients:
+  p #{getAll}
+  h4 GetSingleClient:
+  p #{get}
+  h4 UpdateClientRecord:
+  p #{put}
+  h4 Edit/Delete:
+  p #{del}
