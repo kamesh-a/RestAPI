@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "tests" : "mocha ./tests/apiSpec.js"
+    "tests": "mocha -t 60000 ./tests/apiSpec.js"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -19,6 +19,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "supertest": "^1.2.0"
   }
 }
