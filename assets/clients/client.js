@@ -107,7 +107,7 @@ module.exports.update = co(function*(req, res) {
     }, {
         upsert: false,
         strict: true,
-        multi: false
+        multi: true
     }).exec();
 
     console.log('Query : ', query);
