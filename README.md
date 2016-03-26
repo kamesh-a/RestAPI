@@ -3,9 +3,10 @@
 RestAPI 
 
 prerequisites :
-	- mongodb 3.2
-	- node 4.x
-	- mocha ( for running test cases )
+
+- mongodb 3.2
+- node 4.x
+- mocha ( for running test cases )
 
 Used
 - ES6 generators
