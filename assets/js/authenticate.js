@@ -10,7 +10,6 @@ const jwt = require('jsonwebtoken');
 
 module.exports.authenticate = function(req, res, next) {
     if (req.body.name && req.body.password) {
-    	console.log(req.body)
         if (config.helperClient.name == req.body.name &&
             config.helperClient.password == req.body.password) {
             var token = jwt.sign(config.helperClient, config.secret, {
@@ -26,6 +25,9 @@ module.exports.authenticate = function(req, res, next) {
             res.status(401);
             return res.send("Unauthorized User");
         }
+    } else {
+        res.status(401);
+        return res.send("Unauthorized User");
     }
 }
 
