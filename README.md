@@ -46,7 +46,8 @@ DELETE[private][DEL] : "http://localhost:3000/location/:victimClient" deletes vi
 
 ================= Run Server: =================
 ```
->> npm run start
+>> npm install #installs deps
+>> npm run start #starts the server on localhost 3000 port
 ```
 
 ================= Run Test cases: =================
