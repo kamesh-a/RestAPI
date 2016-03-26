@@ -27,7 +27,7 @@ module.exports.getAll = co(function*(req, res) {
         console.log(e);
         res.render('error', {
             message: e.message,
-            err: e
+            error: e
         })
     }
 })
@@ -67,21 +67,33 @@ module.exports.add = co(function*(req, res) {
 
     yield client.save(); // saving the record.
 
-    res.location('http://location:3000/location/' + req.params.client);
+    res.location('http://localhost:3000/location/' + req.params.client);
     res.status(201);
     res.send()
 });
 
-module.exports.delete =  co(function*(req, res) {
+module.exports.delete = co(function*(req, res) {
     console.log('remove :: opt ', req.params.client);
-    yield LocationModel.remove({
+    var wr = yield LocationModel.remove({
         clientId: req.params.client.trim()
-    }).exec()
-    res.status(204);
-    res.send();
+    }).exec(); // check.
+
+    console.log('delete result : ', wr.result);
+    if ( wr.result.ok && wr.result.n) {
+        // a record was successfully deleted
+        res.status(204);
+        res.send();
+    } else {
+        // no record was successfully deleted
+        res.status(404);
+        res.render('error', {
+            message: 'Resource does not exist',
+            error: {}
+        })
+    }
 });
 
-module.exports.update =  co(function*(req, res) {
+module.exports.update = co(function*(req, res) {
     console.log('update :: opt ', req.params.client, req.body);
     var query = yield LocationModel.update({
         clientId: req.params.client.trim()
@@ -99,7 +111,7 @@ module.exports.update =  co(function*(req, res) {
     }).exec();
 
     console.log('Query : ', query);
-    res.location('http://location:3000/location/' + req.params.client);
+    res.location('http://localhost:3000/location/' + req.params.client);
     res.status(201);
     res.send()
 });
