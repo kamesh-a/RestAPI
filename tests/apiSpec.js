@@ -2,12 +2,9 @@ var assert = require('chai').assert;
 var request = require('supertest');
 var config = require('../assets/js/config.js');
 var request = require('supertest');
-var jwt = require('jsonwebtoken');
 
 
-var accessToken = jwt.sign(config.helperClient, config.secret, {
-    expiresInMinutes: 60 // expires in 24 hours
-});
+var accessToken = null
 
 
 describe('Api testing..', function() {
@@ -25,11 +22,11 @@ describe('Api testing..', function() {
             .post(client)
             .set('Accept', 'application/json')
             .send({ name: 'admin', password: 'admin' })
-            .expect(200, {
-                "success": true,
-                "message": "AccessToken",
-                "token": accessToken
-            },done)
+            .expect(200, function( err , res ){
+            	console.log('storing Access token for API request purpose ',res.body.token)
+            	accessToken = res.body.token;
+            	done();
+            });
     });
 
 
@@ -105,6 +102,5 @@ describe('Api testing..', function() {
             .set('x-access-token', accessToken)
             .expect(204, done);
     });
-
 
 });
