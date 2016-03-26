@@ -1,10 +1,16 @@
 # RestAPI
 
 RestAPI 
-- ES6
-- generators
+
+prerequisites :
+	- mongodb 3.2
+	- node 4.x
+	- mocha ( for running test cases )
+
+Used
+- ES6 generators
 - co 
-- mongodb
+- mongoose ( ODM )
 
 
 RestAPIDemo
