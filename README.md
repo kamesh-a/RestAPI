@@ -38,6 +38,12 @@ Edit/Delete:
 ```
 DELETE[private][DEL] : "http://localhost:3000/location/:victimClient" deletes victimClient and returns 204
 ```
+
+================= Run Server: =================
+```
+>> npm run start
+```
+
 ================= Run Test cases: =================
 ```
 >> npm run tests
